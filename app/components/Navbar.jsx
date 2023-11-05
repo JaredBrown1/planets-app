@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Navbar = () => {
 	return (
-		<div className="flex justify-between w-full p-6 border-b-[1px] border-gray-700">
+		<div className="flex justify-between w-full p-6 border-b-[1px] border-gray-700 text-white">
 			<h1 className="text-[28px]">THE PLANETS</h1>
 			<div className="flex justify-around w-[650px] items-center">
 				<Link href="/Mercury">MERCURY</Link>
