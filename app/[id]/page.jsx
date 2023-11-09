@@ -34,10 +34,18 @@ const PlanetInfo = ({ params }) => {
 					<p className="text-[14px] w-[350px] leading-[25px]">
 						{planet.overview["content"]}
 					</p>
-					<p className="pt-[49px]">
-						Source:
-						<span>
-							<Link href={planet.overview["source"]}>Wikipedia</Link>
+					<p className="flex pt-[49px]">
+						Source :
+						<Link href={planet.overview["source"]} className="underline pl-1">
+							Wikipedia{" "}
+						</Link>
+						<span className="pt-2 pl-2">
+							<Image
+								src="/assets/icon-source.svg"
+								width={12}
+								height={12}
+								alt="source icon"
+							/>
 						</span>
 					</p>
 				</div>
