@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-
 import data from "@/data/data.json";
+import { Antonio } from "next/font/google";
+
+const ant = Antonio({ subsets: ["latin"] });
 
 export async function generateStaticParams() {
 	return await data.map((planet) => ({
@@ -14,6 +16,29 @@ const PlanetInfo = ({ params }) => {
 
 	if (!planet) {
 		return <div>Not found</div>;
+	}
+
+	function getBgClass(id) {
+		switch (id) {
+			case "Mercury":
+				return "bg-Mercury";
+			case "Venus":
+				return "bg-Venus";
+			case "Earth":
+				return "bg-Earth";
+			case "Mars":
+				return "bg-Mars";
+			case "Jupiter":
+				return "bg-Jupiter";
+			case "Saturn":
+				return "bg-Saturn";
+			case "Uranus":
+				return "bg-Uranus";
+			case "Neptune":
+				return "bg-Neptune";
+			default:
+				return "";
+		}
 	}
 
 	return (
@@ -51,73 +76,25 @@ const PlanetInfo = ({ params }) => {
 
 					<div className="pt-[39px] text-[14px]">
 						<div
-							className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-700 border-2 cursor-pointer ${
-								params.id === "Mercury"
-									? "bg-Mercury"
-									: params.id === "Venus"
-									? "bg-Venus"
-									: params.id === "Earth"
-									? "bg-Earth"
-									: params.id === "Mars"
-									? "bg-Mars"
-									: params.id === "Jupiter"
-									? "bg-Jupiter"
-									: params.id === "Saturn"
-									? "bg-Saturn"
-									: params.id === "Uranus"
-									? "bg-Uranus"
-									: params.id === "Neptune"
-									? "bg-Neptune"
-									: ""
-							}`}
+							className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-700 border-2 cursor-pointer ${getBgClass(
+								params.id
+							)}`}
 						>
 							<p className="pr-8">01</p>
 							<h2>OVERVIEW</h2>
 						</div>
 						<div
-							className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-700 border-2 cursor-pointer ${
-								params.id === "Mercury"
-									? "bg-Mercury"
-									: params.id === "Venus"
-									? "bg-Venus"
-									: params.id === "Earth"
-									? "bg-Earth"
-									: params.id === "Mars"
-									? "bg-Mars"
-									: params.id === "Jupiter"
-									? "bg-Jupiter"
-									: params.id === "Saturn"
-									? "bg-Saturn"
-									: params.id === "Uranus"
-									? "bg-Uranus"
-									: params.id === "Neptune"
-									? "bg-Neptune"
-									: ""
-							}`}
+							className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-700 border-2 cursor-pointer ${getBgClass(
+								params.id
+							)}`}
 						>
 							<p className="pr-8">02</p>
 							<h2>INTERNAL STRUCTURE</h2>
 						</div>
 						<div
-							className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-700 border-2 cursor-pointer ${
-								params.id === "Mercury"
-									? "bg-Mercury"
-									: params.id === "Venus"
-									? "bg-Venus"
-									: params.id === "Earth"
-									? "bg-Earth"
-									: params.id === "Mars"
-									? "bg-Mars"
-									: params.id === "Jupiter"
-									? "bg-Jupiter"
-									: params.id === "Saturn"
-									? "bg-Saturn"
-									: params.id === "Uranus"
-									? "bg-Uranus"
-									: params.id === "Neptune"
-									? "bg-Neptune"
-									: ""
-							}`}
+							className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-700 border-2 cursor-pointer ${getBgClass(
+								params.id
+							)}`}
 						>
 							<p className="pr-8">03</p>
 							<h2>SURFACE GEOLOGY</h2>
@@ -126,21 +103,21 @@ const PlanetInfo = ({ params }) => {
 				</div>
 			</div>
 			<div className="flex">
-				<div className="w-[255px] h-[128px]">
-					<h2>ROTATION TIME</h2>
-					{planet.rotation}
+				<div className="mr-[30px] w-[255px] h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
+					<h2 className="text-[12px] text-gray-400">ROTATION TIME</h2>
+					<p className={`${ant.className} text-[40px]`}>{planet.rotation}</p>
 				</div>
-				<div className="w-[255px] h-[128px]">
-					<h2>REVOLUTION TIME</h2>
-					{planet.revolution}
+				<div className="mr-[30px] w-[255px] h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
+					<h2 className="text-[12px] text-gray-400">REVOLUTION TIME</h2>
+					<p className={`${ant.className} text-[40px]`}>{planet.revolution}</p>
 				</div>
-				<div className="w-[255px] h-[128px]">
-					<h2>RADIUS</h2>
-					{planet.radius}
+				<div className="mr-[30px] w-[255px] h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
+					<h2 className="text-[12px] text-gray-400">RADIUS</h2>
+					<p className={`${ant.className} text-[40px]`}>{planet.radius}</p>
 				</div>
-				<div className="w-[255px] h-[128px]">
-					<h2>AVERAGE TEMP.</h2>
-					{planet.temperature}
+				<div className="mr-[30px] w-[255px] h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
+					<h2 className="text-[12px] text-gray-400">AVERAGE TEMP.</h2>
+					<p className={`${ant.className} text-[40px]`}>{planet.temperature}</p>
 				</div>
 			</div>
 		</div>
