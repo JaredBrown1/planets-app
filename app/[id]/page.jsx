@@ -3,8 +3,8 @@ import Link from "next/link";
 
 import data from "@/data/data.json";
 
-export function generateStaticParams() {
-	return data.map((planet) => ({
+export async function generateStaticParams() {
+	return await data.map((planet) => ({
 		id: planet.name.toString(),
 	}));
 }
@@ -48,6 +48,81 @@ const PlanetInfo = ({ params }) => {
 							/>
 						</span>
 					</p>
+
+					<div className="pt-[39px] text-[14px]">
+						<div
+							className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-700 border-2 cursor-pointer ${
+								params.id === "Mercury"
+									? "bg-Mercury"
+									: params.id === "Venus"
+									? "bg-Venus"
+									: params.id === "Earth"
+									? "bg-Earth"
+									: params.id === "Mars"
+									? "bg-Mars"
+									: params.id === "Jupiter"
+									? "bg-Jupiter"
+									: params.id === "Saturn"
+									? "bg-Saturn"
+									: params.id === "Uranus"
+									? "bg-Uranus"
+									: params.id === "Neptune"
+									? "bg-Neptune"
+									: ""
+							}`}
+						>
+							<p className="pr-8">01</p>
+							<h2>OVERVIEW</h2>
+						</div>
+						<div
+							className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-700 border-2 cursor-pointer ${
+								params.id === "Mercury"
+									? "bg-Mercury"
+									: params.id === "Venus"
+									? "bg-Venus"
+									: params.id === "Earth"
+									? "bg-Earth"
+									: params.id === "Mars"
+									? "bg-Mars"
+									: params.id === "Jupiter"
+									? "bg-Jupiter"
+									: params.id === "Saturn"
+									? "bg-Saturn"
+									: params.id === "Uranus"
+									? "bg-Uranus"
+									: params.id === "Neptune"
+									? "bg-Neptune"
+									: ""
+							}`}
+						>
+							<p className="pr-8">02</p>
+							<h2>INTERNAL STRUCTURE</h2>
+						</div>
+						<div
+							className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-700 border-2 cursor-pointer ${
+								params.id === "Mercury"
+									? "bg-Mercury"
+									: params.id === "Venus"
+									? "bg-Venus"
+									: params.id === "Earth"
+									? "bg-Earth"
+									: params.id === "Mars"
+									? "bg-Mars"
+									: params.id === "Jupiter"
+									? "bg-Jupiter"
+									: params.id === "Saturn"
+									? "bg-Saturn"
+									: params.id === "Uranus"
+									? "bg-Uranus"
+									: params.id === "Neptune"
+									? "bg-Neptune"
+									: ""
+							}`}
+						>
+							<p className="pr-8">03</p>
+							<h2>SURFACE GEOLOGY</h2>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div className="flex">
