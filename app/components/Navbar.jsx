@@ -30,30 +30,62 @@ const Navbar = () => {
 
       {isOpen && (
         <div>
-          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+          <Link
+            href="/Mercury"
+            onClick={() => setIsOpen(false)}
+            className="border-b-[1px] border-gray-700 h-[65px] flex justify-center"
+          >
             <Image src="/assets/mercury-mobile.svg" width={319} height={25} />
-          </div>
-          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+          </Link>
+          <Link
+            href="/Venus"
+            onClick={() => setIsOpen(false)}
+            className="border-b-[1px] border-gray-700 h-[65px] flex justify-center"
+          >
             <Image src="/assets/venus-mobile.svg" width={319} height={25} />
-          </div>
-          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+          </Link>
+          <Link
+            href="/Earth"
+            onClick={() => setIsOpen(false)}
+            className="border-b-[1px] border-gray-700 h-[65px] flex justify-center"
+          >
             <Image src="/assets/earth-mobile.svg" width={319} height={25} />
-          </div>
-          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+          </Link>
+          <Link
+            href="/Mars"
+            onClick={() => setIsOpen(false)}
+            className="border-b-[1px] border-gray-700 h-[65px] flex justify-center"
+          >
             <Image src="/assets/mars-mobile.svg" width={319} height={25} />
-          </div>
-          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+          </Link>
+          <Link
+            href="/Jupiter"
+            onClick={() => setIsOpen(false)}
+            className="border-b-[1px] border-gray-700 h-[65px] flex justify-center"
+          >
             <Image src="/assets/jupiter-mobile.svg" width={319} height={25} />
-          </div>
-          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+          </Link>
+          <Link
+            href="/Saturn"
+            onClick={() => setIsOpen(false)}
+            className="border-b-[1px] border-gray-700 h-[65px] flex justify-center"
+          >
             <Image src="/assets/saturn-mobile.svg" width={319} height={25} />
-          </div>
-          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+          </Link>
+          <Link
+            href="/Uranus"
+            onClick={() => setIsOpen(false)}
+            className="border-b-[1px] border-gray-700 h-[65px] flex justify-center"
+          >
             <Image src="/assets/uranus-mobile.svg" width={319} height={25} />
-          </div>
-          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+          </Link>
+          <Link
+            href="/Neptune"
+            onClick={() => setIsOpen(false)}
+            className="border-b-[1px] border-gray-700 h-[65px] flex justify-center"
+          >
             <Image src="/assets/neptune-mobile.svg" width={319} height={25} />
-          </div>
+          </Link>
         </div>
       )}
 

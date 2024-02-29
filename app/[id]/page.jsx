@@ -75,12 +75,69 @@ const PlanetInfo = ({ params }) => {
     }
   }
 
+  function getBorderClass(id) {
+    switch (id) {
+      case "Mercury":
+        return "border-Mercury";
+      case "Venus":
+        return "border-Venus";
+      case "Earth":
+        return "border-Earth";
+      case "Mars":
+        return "border-Mars";
+      case "Jupiter":
+        return "border-Jupiter";
+      case "Saturn":
+        return "border-Saturn";
+      case "Uranus":
+        return "border-Uranus";
+      case "Neptune":
+        return "border-Neptune";
+      default:
+        return "";
+    }
+  }
+
   const selectedContent = getSelectedContent();
 
   return (
-    <div className="flex flex-col justify-center items-center text-white pt-[96px]">
-      <div className="flex justify-between md:flex-col lg:flex-row text-left items-center p-4">
-        <div className="relative">
+    <div className="flex flex-col justify-center items-center text-white md:pt-[96px] w-screen">
+      <div className="flex justify-between flex-col lg:flex-row text-left items-center md:p-4">
+        {/* Mobile nav menu */}
+        <div className="md:hidden h-[50px] pt-2 flex w-screen justify-around items-center border-b-[1px] border-t-[1px] border-gray-700">
+          <h2
+            className={`w-[100px] h-[40px] text-center pb-0 text-[14px] ${
+              selectedSection === "overview"
+                ? `border-b-[2px] ${getBorderClass(params.id)}`
+                : "hover:bg-gray-600"
+            }`}
+            onClick={() => setSelectedSection("overview")}
+          >
+            OVERVIEW
+          </h2>
+          <h2
+            className={`w-[100px] h-[40px] text-center pb-0 text-[14px] ${
+              selectedSection === "internal"
+                ? `border-b-[2px] ${getBorderClass(params.id)}`
+                : "border-gray-700"
+            }`}
+            onClick={() => setSelectedSection("internal")}
+          >
+            STRUCTURE
+          </h2>
+          <h2
+            className={`w-[100px] h-[40px] text-center pb-0 text-[14px] ${
+              selectedSection === "geology"
+                ? `border-b-[2px] ${getBorderClass(params.id)}`
+                : "border-gray-700"
+            }`}
+            onClick={() => setSelectedSection("geology")}
+          >
+            SURFACE
+          </h2>
+        </div>
+
+        <div className="relative pt-20 md:pt-0 w-[300px] md:w-[500px] lg:w-full">
           <Image
             src={getSelectedImage()}
             width={10}
@@ -90,14 +147,14 @@ const PlanetInfo = ({ params }) => {
           />
         </div>
 
-        <div className="lg:pl-[153px] flex md:pt-20 lg:flex-col">
-          <div className="pr-[100px]">
+        <div className="lg:pl-[153px] md:pt-20 text-center md:text-start flex lg:block ">
+          <div className="md:pr-[100px]">
             {" "}
             <h1 className="text-[80px]">{planet.name}</h1>
             <p className="text-[14px] w-[350px] leading-[25px]">
               {selectedContent["content"]}
             </p>
-            <p className="flex pt-[49px]">
+            <p className="flex pt-[49px] justify-center md:justify-start">
               Source :
               <Link href={selectedContent["source"]} className="underline pl-1">
                 Wikipedia{" "}
@@ -113,20 +170,20 @@ const PlanetInfo = ({ params }) => {
             </p>
           </div>
 
-          <div className="pt-[39px] text-[14px]">
+          <div className="hidden pt-[39px] text-[14px] md:block">
             <div
-              className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-900 border-2 cursor-pointer  ${
+              className={`flex pt-3 pl-6 mb-[16px] md:w-[350px] h-[48px] border-gray-900 md:border-2 cursor-pointer ${
                 selectedSection === "overview"
                   ? getBgClass(params.id)
                   : "hover:bg-gray-600"
               }`}
               onClick={() => setSelectedSection("overview")}
             >
-              <p className="pr-8">01</p>
+              <p className="hidden md:flex pr-8">01</p>
               <h2>OVERVIEW</h2>
             </div>
             <div
-              className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-900 border-2 cursor-pointer ${
+              className={`flex pt-3 pl-6 mb-[16px] md:w-[350px] h-[48px] border-gray-900 md:border-2 cursor-pointer ${
                 selectedSection === "internal"
                   ? getBgClass(params.id)
                   : "hover:bg-gray-600"
@@ -137,7 +194,7 @@ const PlanetInfo = ({ params }) => {
               <h2>INTERNAL STRUCTURE</h2>
             </div>
             <div
-              className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-900 border-2 cursor-pointer ${
+              className={`flex pt-3 pl-6 mb-[16px] md:w-[350px] h-[48px] border-gray-900 md:border-2 cursor-pointer ${
                 selectedSection === "geology"
                   ? getBgClass(params.id)
                   : "hover:bg-gray-600"
@@ -151,28 +208,36 @@ const PlanetInfo = ({ params }) => {
         </div>
       </div>
 
-      <div className="flex md:pt-10 lg:pt-0">
-        <div className="mr-[30px] md:w-[164px] md:h-[88px] lg:w-[255px] lg:h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
+      <div className="flex flex-col md:flex-row pt-10 lg:pt-0 pb-10">
+        <div className="w-[327px] h-[48px] md:mr-[30px] md:w-[164px] md:h-[88px] lg:w-[255px] lg:h-[128px] border-gray-600 border-2 flex justify-between md:flex-col md:justify-center md:pl-6 p-2 md:p-0 mb-[8px] md:mb-0">
           <h2 className="text-[12px] text-gray-400">ROTATION TIME</h2>
-          <p className={`${ant.className} md:text-[24px] lg:text-[40px]`}>
+          <p
+            className={`${ant.className} text-[20px] md:text-[24px] lg:text-[40px]`}
+          >
             {planet.rotation}
           </p>
         </div>
-        <div className="mr-[30px] md:w-[164px] md:h-[88px] lg:w-[255px] lg:h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
+        <div className="w-[327px] h-[48px] md:mr-[30px] md:w-[164px] md:h-[88px] lg:w-[255px] lg:h-[128px] border-gray-600 border-2 flex justify-between md:flex-col md:justify-center md:pl-6 p-2 md:p-0 mb-[8px] md:mb-0">
           <h2 className="text-[12px] text-gray-400">REVOLUTION TIME</h2>
-          <p className={`${ant.className} md:text-[24px] text-[40px]`}>
+          <p
+            className={`${ant.className} text-[20px] md:text-[24px] lg:text-[40px]`}
+          >
             {planet.revolution}
           </p>
         </div>
-        <div className="mr-[30px] md:w-[164px] md:h-[88px] lg:w-[255px] lg:h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
+        <div className="w-[327px] h-[48px] md:mr-[30px] md:w-[164px] md:h-[88px] lg:w-[255px] lg:h-[128px] border-gray-600 border-2 flex justify-between md:flex-col md:justify-center md:pl-6 p-2 md:p-0 mb-[8px] md:mb-0">
           <h2 className="text-[12px] text-gray-400">RADIUS</h2>
-          <p className={`${ant.className} md:text-[24px] text-[40px]`}>
+          <p
+            className={`${ant.className} text-[20px] md:text-[24px] lg:text-[40px]`}
+          >
             {planet.radius}
           </p>
         </div>
-        <div className="mr-[30px] md:w-[164px] md:h-[88px] lg:w-[255px] lg:h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
+        <div className="w-[327px] h-[48px] md:mr-[30px] md:w-[164px] md:h-[88px] lg:w-[255px] lg:h-[128px] border-gray-600 border-2 flex justify-between md:flex-col md:justify-center md:pl-6 p-2 md:p-0 mb-[8px] md:mb-0">
           <h2 className="text-[12px] text-gray-400">AVERAGE TEMP.</h2>
-          <p className={`${ant.className} md:text-[24px] text-[40px]`}>
+          <p
+            className={`${ant.className} text-[20px] md:text-[24px] lg:text-[40px]`}
+          >
             {planet.temperature}
           </p>
         </div>
