@@ -1,14 +1,63 @@
-import Link from "next/link";
+"use client";
 
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { Antonio } from "next/font/google";
 
 const ant = Antonio({ subsets: ["latin"] });
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="flex md:flex-col md:text-center lg:flex-row lg:justify-between md:items-center w-full p-6 pt-8  border-b-[1px] border-gray-700 text-white">
-      <h1 className={`${ant.className} text-[28px]`}>THE PLANETS</h1>
-      <div className="flex justify-around w-[650px] md:pt-[39px] lg:pt-0 items-center text-center ">
+    <div className="md:flex md:flex-col md:text-center lg:flex-row lg:justify-between md:items-center md:w-full md:p-6 pt-2 md:pt-8  md:border-b-[1px] border-gray-700 text-white">
+      <div className="flex pb-10 md:pb-0 md:none justify-between p-4">
+        <h1 className={`${ant.className} text-[28px]`}>THE PLANETS</h1>
+        <button className="md:hidden" onClick={toggleMenu}>
+          <Image
+            src="/assets/hamburger-button.svg"
+            width={24}
+            height={17}
+            alt="burger menu button"
+          />
+        </button>
+      </div>
+
+      {isOpen && (
+        <div>
+          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+            <Image src="/assets/mercury-mobile.svg" width={319} height={25} />
+          </div>
+          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+            <Image src="/assets/venus-mobile.svg" width={319} height={25} />
+          </div>
+          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+            <Image src="/assets/earth-mobile.svg" width={319} height={25} />
+          </div>
+          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+            <Image src="/assets/mars-mobile.svg" width={319} height={25} />
+          </div>
+          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+            <Image src="/assets/jupiter-mobile.svg" width={319} height={25} />
+          </div>
+          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+            <Image src="/assets/saturn-mobile.svg" width={319} height={25} />
+          </div>
+          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+            <Image src="/assets/uranus-mobile.svg" width={319} height={25} />
+          </div>
+          <div className="border-b-[1px] border-gray-700 h-[65px] flex justify-center">
+            <Image src="/assets/neptune-mobile.svg" width={319} height={25} />
+          </div>
+        </div>
+      )}
+
+      <div className="hidden md:flex md:justify-around md:w-[650px] md:pt-[39px] lg:pt-0 md:items-center md:text-center">
         <Link
           className="border-t-[#419EBB] lg:hover:border-t-2 h-full pt-7 mt-[-40px]"
           href="/Mercury"
