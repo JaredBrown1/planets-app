@@ -112,8 +112,10 @@ const PlanetInfo = ({ params }) => {
 
           <div className="pt-[39px] text-[14px]">
             <div
-              className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-700 border-2 cursor-pointer ${
-                selectedSection === "overview" ? getBgClass(params.id) : ""
+              className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-900 border-2 cursor-pointer  ${
+                selectedSection === "overview"
+                  ? getBgClass(params.id)
+                  : "hover:bg-gray-600"
               }`}
               onClick={() => setSelectedSection("overview")}
             >
@@ -121,8 +123,10 @@ const PlanetInfo = ({ params }) => {
               <h2>OVERVIEW</h2>
             </div>
             <div
-              className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-700 border-2 cursor-pointer ${
-                selectedSection === "internal" ? getBgClass(params.id) : ""
+              className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-900 border-2 cursor-pointer ${
+                selectedSection === "internal"
+                  ? getBgClass(params.id)
+                  : "hover:bg-gray-600"
               }`}
               onClick={() => setSelectedSection("internal")}
             >
@@ -130,8 +134,10 @@ const PlanetInfo = ({ params }) => {
               <h2>INTERNAL STRUCTURE</h2>
             </div>
             <div
-              className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-700 border-2 cursor-pointer ${
-                selectedSection === "geology" ? getBgClass(params.id) : ""
+              className={`flex pt-3 pl-6 mb-[16px] w-[350px] h-[48px] border-gray-900 border-2 cursor-pointer ${
+                selectedSection === "geology"
+                  ? getBgClass(params.id)
+                  : "hover:bg-gray-600"
               }`}
               onClick={() => setSelectedSection("geology")}
             >
