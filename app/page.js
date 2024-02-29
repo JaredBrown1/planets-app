@@ -1,6 +1,14 @@
-import Navbar from "./components/Navbar";
-import PlanetInfo from "./components/planet/PlanetInfo";
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-	return <main className=""></main>;
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/Mercury");
+  }, []);
+
+  return <div></div>;
 }
