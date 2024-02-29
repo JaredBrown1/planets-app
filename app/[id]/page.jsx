@@ -79,7 +79,7 @@ const PlanetInfo = ({ params }) => {
 
   return (
     <div className="flex flex-col justify-center items-center text-white pt-[96px]">
-      <div className="flex justify-between text-left items-center p-4">
+      <div className="flex justify-between md:flex-col lg:flex-row text-left items-center p-4">
         <div className="relative">
           <Image
             src={getSelectedImage()}
@@ -90,25 +90,28 @@ const PlanetInfo = ({ params }) => {
           />
         </div>
 
-        <div className="pl-[153px]">
-          <h1 className="text-[80px]">{planet.name}</h1>
-          <p className="text-[14px] w-[350px] leading-[25px]">
-            {selectedContent["content"]}
-          </p>
-          <p className="flex pt-[49px]">
-            Source :
-            <Link href={selectedContent["source"]} className="underline pl-1">
-              Wikipedia{" "}
-            </Link>
-            <span className="pt-2 pl-2">
-              <Image
-                src="/assets/icon-source.svg"
-                width={12}
-                height={12}
-                alt="source icon"
-              />
-            </span>
-          </p>
+        <div className="lg:pl-[153px] flex md:pt-20 lg:flex-col">
+          <div className="pr-[100px]">
+            {" "}
+            <h1 className="text-[80px]">{planet.name}</h1>
+            <p className="text-[14px] w-[350px] leading-[25px]">
+              {selectedContent["content"]}
+            </p>
+            <p className="flex pt-[49px]">
+              Source :
+              <Link href={selectedContent["source"]} className="underline pl-1">
+                Wikipedia{" "}
+              </Link>
+              <span className="pt-2 pl-2">
+                <Image
+                  src="/assets/icon-source.svg"
+                  width={12}
+                  height={12}
+                  alt="source icon"
+                />
+              </span>
+            </p>
+          </div>
 
           <div className="pt-[39px] text-[14px]">
             <div
@@ -148,22 +151,30 @@ const PlanetInfo = ({ params }) => {
         </div>
       </div>
 
-      <div className="flex">
-        <div className="mr-[30px] w-[255px] h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
+      <div className="flex md:pt-10 lg:pt-0">
+        <div className="mr-[30px] md:w-[164px] md:h-[88px] lg:w-[255px] lg:h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
           <h2 className="text-[12px] text-gray-400">ROTATION TIME</h2>
-          <p className={`${ant.className} text-[40px]`}>{planet.rotation}</p>
+          <p className={`${ant.className} md:text-[24px] lg:text-[40px]`}>
+            {planet.rotation}
+          </p>
         </div>
-        <div className="mr-[30px] w-[255px] h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
+        <div className="mr-[30px] md:w-[164px] md:h-[88px] lg:w-[255px] lg:h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
           <h2 className="text-[12px] text-gray-400">REVOLUTION TIME</h2>
-          <p className={`${ant.className} text-[40px]`}>{planet.revolution}</p>
+          <p className={`${ant.className} md:text-[24px] text-[40px]`}>
+            {planet.revolution}
+          </p>
         </div>
-        <div className="mr-[30px] w-[255px] h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
+        <div className="mr-[30px] md:w-[164px] md:h-[88px] lg:w-[255px] lg:h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
           <h2 className="text-[12px] text-gray-400">RADIUS</h2>
-          <p className={`${ant.className} text-[40px]`}>{planet.radius}</p>
+          <p className={`${ant.className} md:text-[24px] text-[40px]`}>
+            {planet.radius}
+          </p>
         </div>
-        <div className="mr-[30px] w-[255px] h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
+        <div className="mr-[30px] md:w-[164px] md:h-[88px] lg:w-[255px] lg:h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
           <h2 className="text-[12px] text-gray-400">AVERAGE TEMP.</h2>
-          <p className={`${ant.className} text-[40px]`}>{planet.temperature}</p>
+          <p className={`${ant.className} md:text-[24px] text-[40px]`}>
+            {planet.temperature}
+          </p>
         </div>
       </div>
     </div>
