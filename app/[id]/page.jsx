@@ -35,6 +35,23 @@ const PlanetInfo = ({ params }) => {
     }
   }
 
+  function getSelectedContent() {
+    if (!planet) {
+      return { content: "", source: "" }; // Return default values if planet is undefined
+    }
+
+    switch (selectedSection) {
+      case "overview":
+        return planet.overview || { content: "", source: "" }; // Return default values if overview is undefined
+      case "internal":
+        return planet.structure || { content: "", source: "" }; // Return default values if internal is undefined
+      case "geology":
+        return planet.geology || { content: "", source: "" }; // Return default values if geology is undefined
+      default:
+        return planet.overview || { content: "", source: "" }; // Return default values if overview is undefined
+    }
+  }
+
   function getBgClass(id) {
     switch (id) {
       case "Mercury":
@@ -58,6 +75,8 @@ const PlanetInfo = ({ params }) => {
     }
   }
 
+  const selectedContent = getSelectedContent();
+
   return (
     <div className="flex flex-col justify-center items-center text-white pt-[96px]">
       <div className="flex justify-between text-left items-center p-4">
@@ -74,11 +93,11 @@ const PlanetInfo = ({ params }) => {
         <div className="pl-[153px]">
           <h1 className="text-[80px]">{planet.name}</h1>
           <p className="text-[14px] w-[350px] leading-[25px]">
-            {planet.overview["content"]}
+            {selectedContent["content"]}
           </p>
           <p className="flex pt-[49px]">
             Source :
-            <Link href={planet.overview["source"]} className="underline pl-1">
+            <Link href={selectedContent["source"]} className="underline pl-1">
               Wikipedia{" "}
             </Link>
             <span className="pt-2 pl-2">
@@ -122,6 +141,7 @@ const PlanetInfo = ({ params }) => {
           </div>
         </div>
       </div>
+
       <div className="flex">
         <div className="mr-[30px] w-[255px] h-[128px] border-gray-600 border-2 flex flex-col justify-center pl-6">
           <h2 className="text-[12px] text-gray-400">ROTATION TIME</h2>
